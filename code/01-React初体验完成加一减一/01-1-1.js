@@ -1,7 +1,6 @@
 // 声明变量
 let number = 0
 
-
 // 方法
 let add = () => {
   number += 1
@@ -14,7 +13,6 @@ let reduce = () => {
 
 // 第一次渲染
 render()
-
 
 function render() {
   // 创建虚拟DOM
