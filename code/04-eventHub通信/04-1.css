@@ -1,0 +1,26 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.home {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  color: #fff;
+  background: #000;
+}
+
+.father {
+  padding: 10px;
+  margin-top: 10px;
+  border: 1px solid #fff;
+}
+
+.son {
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #fff;
+}
