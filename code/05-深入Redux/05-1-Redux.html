@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="https://cdn.bootcdn.net/ajax/libs/redux/4.0.5/redux.min.js"></script>
+</head>
+<body>
+<div>
+  <div id="app"></div>
+</div>
+<script>
+  function add1() {
+    store.dispatch({type: "add", payload: 1})
+  }
+
+  function add2() {
+    store.dispatch({type: "add", payload: 2})
+  }
+
+  function addIf() {
+    const oldState = store.getState()
+    if (oldState % 2 === 1) {
+      store.dispatch({type: "add", payload: 1})
+    }
+  }
+
+  function addAsync() {
+    setTimeout(() => {
+      store.dispatch({type: "add", payload: 1})
+    }, 2000)
+  }
+
+  function render(store) {
+    let app = document.querySelector("#app")
+    app.innerHTML = `
+      你点击了 <span id="value">${store.getState()}</span> 次
+      <div>
+      <button id="add1" onclick="add1()">+1</button>
+      <button id="minus1" onclick="add2()">+2</button>
+      <button id="add1IfOdd" onclick="addIf()">如果是单数就加1</button>
+      <button id="add1After2Sec" onclick="addAsync()">两秒后加1</button>
+      </div>
+    `
+  }
+
+  function stateChanger(state, action) {
+    if (state === undefined) {
+      return 0
+    } else {
+      if (action.type === "add") {
+        let newState = state + action.payload
+        return newState
+      } else {
+        return state
+      }
+    }
+  }
+
+  let store = Redux.createStore(stateChanger)
+
+  render(store)
+
+  store.subscribe(() => {
+    render(store)
+  })
+</script>
+</body>
+</html>
