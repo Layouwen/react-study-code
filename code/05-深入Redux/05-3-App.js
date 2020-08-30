@@ -18,16 +18,16 @@ class App extends Component {
   }
 }
 
-function x(state) {
+function mapStateToProps(state) {
   return {
     n: state.n
   }
 }
 
-const y = {
+const mapDispatchToProps = {
   add1: () => {
     return {type: "add", payload: 1}
   }
 }
 
-export default connect(x, y)(App)
+export default connect(mapStateToProps, mapDispatchToProps)(App)
