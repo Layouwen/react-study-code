@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+<script>
+  // 四层参数传递
+  function f1(n1){
+    console.log(1,n1)
+    f2(n1)
+  }
+  function f2(n2){
+    console.log(2,n2)
+    f3(n2)
+  }
+  function f3(n3){
+    console.log(3,n3)
+    f4(n3)
+  }
+  function f4(n4){
+    console.log(4,n4)
+  }
+  f1(3)
+  console.log("end")
+</script>
+</body>
+</html>
