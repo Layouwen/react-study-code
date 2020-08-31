@@ -1,0 +1,25 @@
+.App {
+  font-family: sans-serif;
+  text-align: center;
+}
+
+.size {
+  width: 200px;
+  height: 100px;
+}
+
+.bottom {
+  background: green;
+}
+
+.pink {
+  width: 200px;
+  height: 100px;
+  background: pink;
+}
+
+.black {
+  width: 200px;
+  height: 100px;
+  background: black;
+}
