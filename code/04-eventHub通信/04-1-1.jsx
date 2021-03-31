@@ -3,21 +3,40 @@ let money = {
   amount: 100000
 }
 
-// 事件中心
+/**
+ * 保存事件
+ * {
+ *   payMoney: [
+ *     ()=>console.log("花钱")
+ *   ],
+ *   getMoney: [
+ *     ()=>console.log("爸爸拿钱"),
+ *     ()=>console.log("儿子拿钱")
+ *   ]
+ * }
+ */
 let fnLists = {}
+
+// 事件中心
 let eventHub = {
-  trigger(eventName, data) {
-    let fnList = fnLists[eventName]
-    if (!fnList) return
-    for (let i = 0; i < fnList.length; i++) {
-      fnList[i](data)
-    }
-  },
+  // 添加事件
   on(eventName, fn) {
+    // 如果之前没添加，则新建一个事件数组
     if (!fnLists[eventName]) {
       fnLists[eventName] = []
     }
+    // 往事件数组添加事件
     fnLists[eventName].push(fn)
+  },
+  // 触发事件
+  trigger(eventName, data) {
+    // 获取我们对应事件名的事件数组
+    let fnList = fnLists[eventName]
+    if (!fnList) return
+    // 遍历该数组的所有事件
+    for (let i = 0; i < fnList.length; i++) {
+      fnList[i](data)
+    }
   }
 }
 
@@ -44,8 +63,8 @@ class App extends React.Component {
   render() {
     return (
       <div className="home">
-        <Father1 money={this.state.money}/>
-        <Father2 money={this.state.money}/>
+        <Father1 money={this.state.money} />
+        <Father2 money={this.state.money} />
       </div>
     )
   }
@@ -60,8 +79,8 @@ class Father1 extends React.Component {
     return (
       <div className="father">
         Father1 {this.props.money.amount}
-        <Son11 money={this.props.money}/>
-        <Son12 money={this.props.money}/>
+        <Son11 money={this.props.money} />
+        <Son12 money={this.props.money} />
       </div>
     )
   }
@@ -109,8 +128,8 @@ class Father2 extends React.Component {
     return (
       <div className="father">
         Father2 {this.props.money.amount}
-        <Son21 money={this.props.money}/>
-        <Son22 money={this.props.money}/>
+        <Son21 money={this.props.money} />
+        <Son22 money={this.props.money} />
       </div>
     )
   }
@@ -147,5 +166,5 @@ class Son22 extends React.Component {
 render()
 
 function render() {
-  ReactDOM.render(<App/>, document.querySelector("#root"))
+  ReactDOM.render(<App />, document.querySelector("#root"))
 }
